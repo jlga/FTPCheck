@@ -22,6 +22,9 @@ namespace FTPCheck
         string inputFile = "input.txt";
         string outputFile = "output.txt";
 
+        List<string> checkedServers;
+        List<string> goodServers;
+
         int okservers = 0;
         static void Main(string[] args)
         {
@@ -85,6 +88,7 @@ namespace FTPCheck
                     ftp.DeleteFile("test.txt");
                     Console.WriteLine("OK: " + ip, Color.Lime);
                     okservers++;
+                    goodServers.Add(ip);
                     using (StreamWriter w = File.AppendText(outputFile))
                     {
                         w.WriteLine(ip);
